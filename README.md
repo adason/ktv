@@ -7,5 +7,5 @@ Service layer for KTV
 
 Run the following command
 ```
-python -m ktv.main -o quiet https://www.youtube.com/watch?v=1hI-7vj2FhE
+python -m ktv -o quiet https://www.youtube.com/watch?v=1hI-7vj2FhE
 ```

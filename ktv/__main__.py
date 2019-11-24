@@ -1,7 +1,7 @@
 import argparse
 import logging
 
-from .grab import download
+from ktv.grab import download
 
 FORMAT = "%(asctime)-15s | %(module)s | %(message)s"
 logging.basicConfig(format=FORMAT)
@@ -22,7 +22,7 @@ def parse_args():
     return args
 
 
-if __name__ == "__main__":
+def main():
     args = parse_args()
     root_logger = logging.getLogger()
     if args.vervbose:
@@ -36,3 +36,7 @@ if __name__ == "__main__":
     output = args.output
     retcode = download(url, output)
     logger.debug(retcode)
+
+
+if __name__ == "__main__":
+    main()

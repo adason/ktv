@@ -1,2 +1,0 @@
-youtube_dl==2019.11.22
-spleeter==1.4.3

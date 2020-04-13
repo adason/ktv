@@ -1,7 +1,10 @@
 import argparse
 import logging
+from pathlib import Path
 
-from ktv.grab import download
+from ktv.tasks import download, split
+import ktv.constants as const
+
 
 FORMAT = "%(asctime)-15s | %(module)s | %(message)s"
 logging.basicConfig(format=FORMAT)
@@ -15,10 +18,14 @@ def parse_args():
     parser.add_argument(
         "-v", "--vervbose", action="store_true", default=False, help="debug mode"
     )
+    parser.add_argument(
+        "-o", "--output", type=str, default=const.FILENAME,
+        help="output filename (exclude extension)"
+    )
     parser.add_argument("url", type=str, help="a youtube url")
-    parser.add_argument("-o", "--output", type=str, help="output filename")
 
     args = parser.parse_args()
+
     return args
 
 
@@ -33,9 +40,10 @@ def main():
     logger.debug(args)
 
     url = args.url
-    output = args.output
-    retcode = download(url, output)
-    logger.debug(retcode)
+    out_file_ext = args.output + const.EXTENSION
+    output = str(Path(const.OUTPUT_DIR) / out_file_ext)
+    download(url, output)
+    split(output)
 
 
 if __name__ == "__main__":

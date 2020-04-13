@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: KTV tool
+  version: 1.0.0
+paths:
+  /split:
+    get:
+      summary: Split Audio Source from Youtube URL
+      parameters:
+        - name: url
+          in: query
+          required: true
+          description: Youtube URL
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Success"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Success:
+      type: string
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+

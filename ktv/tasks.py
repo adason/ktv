@@ -14,10 +14,7 @@ logger = logging.getLogger(__name__)
 def download(url, filename):
     filename_ext = f"{filename}.{const.VIDEO_EXTENSION}"
     ydl_opts = {
-        "format": (
-            f"bestvideo[ext={const.VIDEO_EXTENSION}]+"
-            f"bestaudio[ext={const.AUDIO_EXTENSION}]/best"
-        ),
+        "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best",
         "logger": logger,
         "outtmpl": filename_ext
     }

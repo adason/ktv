@@ -1,3 +1,4 @@
 OUTPUT_DIR = "/tmp/ktv"
 FILENAME = "raw"
-EXTENSION = ".mp3"
+VIDEO_EXTENSION = "mp4"
+AUDIO_EXTENSION = "wav"

@@ -2,7 +2,7 @@ import argparse
 import logging
 from pathlib import Path
 
-from ktv.tasks import download, split
+from ktv.tasks import download, split, extract_audio, combine
 import ktv.constants as const
 
 
@@ -40,10 +40,11 @@ def main():
     logger.debug(args)
 
     url = args.url
-    out_file_ext = args.output + const.EXTENSION
-    output = str(Path(const.OUTPUT_DIR) / out_file_ext)
+    output = str(Path(const.OUTPUT_DIR) / args.output)
     download(url, output)
+    extract_audio(output)
     split(output)
+    combine(output)
 
 
 if __name__ == "__main__":

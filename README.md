@@ -1,9 +1,13 @@
 # KTV
 Split vocal and accompaniment for a given youtube URL.
 
-## Download and split using docker
+## Requirements
 
-For example, to split this [song](https://www.youtube.com/watch?v=51SOZjKuaaQ)
+- [docker](https://docs.docker.com/get-docker/)
+
+## Download Video From Youtube and Process Audio Separation
+
+For example, to split this [song](https://www.youtube.com/watch?v=51SOZjKuaaQ) and create a processed video
 
 ```
 docker run \
@@ -14,7 +18,12 @@ docker run \
   https://www.youtube.com/watch?v=51SOZjKuaaQ
 ```
 
-You can find downloaded mp3 file as well as split files under `/tmp/ktv`.
+The processed output video will include 3 audio tracks:
+- First audio track from the original source
+- Second audio track for accompaniment only
+- Third audio track for vocals only
+
+You can find processed files such as `luggage_processed.mp4` under `/tmp/ktv/` along with other intermediate files with prefix `luggage`. You can change docker mount point to any local directory (such as `-v $HOME/Downloads:/tmp`). You can also replace the filename output prefix `luggage` as desired.
 
 ## Development
 
@@ -40,5 +49,5 @@ docker push adason/ktv:latest
 ### Python virtualenv
 
 ```
-python -m ktv -o output https://www.youtube.com/watch?v=51SOZjKuaaQ
+python -m ktv -o luggage https://www.youtube.com/watch?v=51SOZjKuaaQ
 ```

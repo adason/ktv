@@ -21,4 +21,5 @@ RUN pip install -r requirements.txt
 
 COPY ktv /ktv
 
-ENTRYPOINT ["tini", "--", "python", "-m", "ktv"]
+ENTRYPOINT ["tini", "-g", "--"]
+CMD ["python", "-m", "ktv"]

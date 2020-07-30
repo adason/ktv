@@ -1,2 +1,2 @@
-spleeter==1.5.0
-youtube_dl==2020.3.24
+spleeter==1.5.4
+youtube_dl==2020.7.28
